@@ -1,0 +1,687 @@
+<!--All aspects of this course fall under the provisions of the Honor Code 
+of the School of Engineering. Homework assignments must represent the 
+individual effort of the student, without assistance from others. 
+Cheating and copying on quizzes and exams are, of course, not allowed. 
+Plagiarism on programming assignments will not be tolerated. Violations 
+of the Honor Code will be turned over to the Honor Code Committee of the 
+School of Engineering for appropriate handling. 
+
+CSCI 581 Bioinformatics 
+Name :  Gang Wang
+program 1
+Feb 11 2003
+
+-->
+
+<html>
+
+<HEAD>
+<SCRIPT LANGUAGE=JavaScript>
+
+<!-- Program adapted from the base conversion utility at -->
+<!-- http://javascript.internet.com -->
+<!-- Original version by Mike Maloney  (http://nfg.natfuel.com) -->
+
+function generateRadomStr(){
+  var str="";  var randomNum;
+  count = Math.random()*1000;
+    if (document.theForm.elements[4].checked){ 
+	  for ( i= 1; i<= count; i++ ){
+        randomNum =Math.random(); 
+        if ( randomNum >0     && randomNum<= 0.25 ){  str = str + "A";  }
+        if ( randomNum >0.25  && randomNum<= 0.5  ){  str = str + "T";  }
+        if ( randomNum >0.5   && randomNum<= 0.75 ){  str = str + "G";  }
+        if ( randomNum >0.75  && randomNum<= 1    ){  str = str + "C";  }
+	  }
+	}
+	
+    if (document.theForm.elements[5].checked){ 
+   	  for ( i= 1; i<= count; i++ ){
+        randomNum =Math.random(); 
+	    if ( randomNum >0     && randomNum<= 0.25 ){  str = str + "A";  }
+        if ( randomNum >0.25  && randomNum<= 0.5  ){  str = str + "U";  }
+        if ( randomNum >0.5   && randomNum<= 0.75 ){  str = str + "G";  }
+        if ( randomNum >0.75  && randomNum<= 1    ){  str = str + "C";  }
+	  }
+	}
+    if (document.theForm.elements[6].checked){ 
+      for ( i= 1; i<= count; i++ ){
+        randomNum =Math.random(); 
+	    if ( randomNum >0     && randomNum<= 0.05 ){  str = str + "A";  }
+        if ( randomNum >0.05  && randomNum<= 0.1  ){  str = str + "R";  }
+        if ( randomNum >0.10  && randomNum<= 0.15 ){  str = str + "N";  }
+        if ( randomNum >0.15  && randomNum<= 0.2  ){  str = str + "D";  }
+        if ( randomNum >0.2   && randomNum<= 0.25 ){  str = str + "C";  }
+        if ( randomNum >0.25  && randomNum<= 0.3  ){  str = str + "Q";  }
+        if ( randomNum >0.3   && randomNum<= 0.35 ){  str = str + "E";  }
+        if ( randomNum >0.35  && randomNum<= 0.4  ){  str = str + "G";  }
+        if ( randomNum >0.4   && randomNum<= 0.45 ){  str = str + "H";  }
+        if ( randomNum >0.45  && randomNum<= 0.5  ){  str = str + "I";  }
+        if ( randomNum >0.5   && randomNum<= 0.55 ){  str = str + "L";  }
+        if ( randomNum >0.55  && randomNum<= 0.6  ){  str = str + "K";  }
+        if ( randomNum >0.6   && randomNum<= 0.65 ){  str = str + "M";  }
+        if ( randomNum >0.65  && randomNum<= 0.7  ){  str = str + "F";  }
+        if ( randomNum >0.7   && randomNum<= 0.75 ){  str = str + "P";  }
+        if ( randomNum >0.75  && randomNum<= 0.8  ){  str = str + "S";  }
+        if ( randomNum >0.8   && randomNum<= 0.85 ){  str = str + "T";  }
+        if ( randomNum >0.85  && randomNum<= 0.9  ){  str = str + "W";  }
+        if ( randomNum >0.9   && randomNum<= 0.95 ){  str = str + "Y";  }
+        if ( randomNum >0.95  && randomNum<= 1    ){  str = str + "V";  }
+      }
+	}
+	
+	document.theForm.inputbox.value = str;
+	
+} // end  function generateRadomStr()
+
+function reverseStr(){
+  var strInput = document.theForm.inputbox.value ;
+  var rev ="";
+  for ( i=0; i< strInput.length; i++ ){
+       a = strInput.charAt(i);
+       rev= a + rev;
+  }
+  document.theForm.revStr.value = rev;
+}
+
+function checkInputValidity(strInput, base) {
+   var l="" ;
+   var flag =1 ;
+   strUpcase=strInput.toUpperCase();
+   if (base==1) {
+      for ( i=0; i< strUpcase.length; i++ ){
+         l=strUpcase.charAt(i);
+         if ( l != "A" )
+           if ( l != "T")
+             if ( l != "G")
+               if (l != "C" ){   flag =0;    break;    }
+      }
+   }
+   
+   else if (base==2) {
+      for ( i=0; i< strUpcase.length; i++ ){
+         l=strUpcase.charAt(i);
+         if ( l != "A" )
+           if( l != "U" )
+             if ( l != "G" )
+               if ( l != "C" ){   flag =0;   break;    }
+      }
+   }
+   
+   else if (base==3) {
+      for ( i=0; i< strUpcase.length; i++ ){
+         l=strUpcase.charAt(i);
+         if ( l !="A" )
+          if ( l !="R" )
+           if ( l !="N" )
+            if ( l !="D" )
+             if ( l !="C" )
+              if ( l !="Q" )
+               if ( l !="E" )
+                if ( l !="G" )
+                 if ( l !="H" )
+                  if ( l !="I" )
+                   if ( l !="L" )
+                    if ( l !="K" )
+                     if ( l !="M" )
+                      if ( l !="F" )
+                       if ( l !="P" )
+                        if ( l !="S" )
+                         if ( l !="T" )
+                          if ( l !="W" )
+                           if ( l !="Y" )
+                            if ( l !="V"  ) {    flag =0;     break;     }
+      }
+   }
+
+   if ( flag == 0 ) {  // 0 means invalid input; 1 means valid input;
+      alert("Invalid Symbols Input! \nPlease Check Your Sequence Again !");
+      return 0;
+   }
+   else  return 1;
+} // end fucntion checkInputValidity()
+
+
+function transcription( strInput ) {
+   var l = "";
+   var str="";
+   var result=checkInputValidity( strInput, 1 );
+   if ( result ==1  ){
+      for ( i=0; i< strInput.length; i++ ){
+         l = strInput.charAt(i);
+         if ( l == "T")   l = "U"; 
+         str = str + l;
+      }
+   }
+   return str ;
+    
+}
+
+function reverseTranscription(strInput) {
+   var l="";
+   var str="";
+   var result=checkInputValidity( strInput, 2 );
+   if ( result ==1  ){
+      for ( i=0; i< strInput.length; i++ ){
+         l=strInput.charAt(i);
+         if ( l == "U")   l = "T";
+         str=str + l;
+      }
+      return str ;
+   } 
+}
+
+function translation(strInput, base) {
+   var l="";
+   var str="";
+   var i=0;
+   
+   if ( base == 1)    var result1=checkInputValidity( strInput, 1 );
+   else    var result2=checkInputValidity( strInput, 2 );
+   
+   if (result1 == 1 || result2 ==1 ){ 
+   while ( i< strInput.length ){
+      var a="";
+      amino="";
+      for ( j=i; j<=i+2; j++ )    
+         a = a + strInput.charAt(j);
+      
+      if ( a.charAt(0)== "A" && (a.charAt(1)== "T" || a.charAt(1)== "U" ) ) {
+         if( (a.charAt(2)== "T" || a.charAt(2)== "U") || (a.charAt(2)== "C" || a.charAt(2)== "A" ))
+            amino="I";
+         else amino="M";
+      }
+      
+      else if ( a.charAt(0)== "C" && (a.charAt(1)== "T"||a.charAt(1)== "U" ) )  {  amino="L";  }
+      
+      else if ( (a.charAt(0)== "T" && a.charAt(1)== "T") || (a.charAt(0)== "U"&& a.charAt(1)== "U" ) ){
+         if ( a.charAt(2)== "A" || a.charAt(2)== "G")
+            amino="L";
+         else amino="F";
+      }
+      
+      else if ( a.charAt(0)== "G" && (a.charAt(1)== "T"|| a.charAt(1)== "U" )){   amino="V";  }
+      
+      else if ( (a.charAt(0)== "T" ||a.charAt(0)== "U" ) && a.charAt(1)== "G"){
+         if ( a.charAt(2)== "T" || a.charAt(2)== "U" || a.charAt(2)== "C")
+            amino="C";
+         else if ( a.charAt(2)== "G" ) amino="W";
+              else  amino="#";
+      }
+      
+      else if ( a.charAt(0)== "G" && a.charAt(1)== "C"){    amino="A";  }
+
+      else if ( a.charAt(0)== "G" && a.charAt(1)== "G"){    amino="G";  }
+
+      else if ( a.charAt(0)== "C" && a.charAt(1)== "C"){    amino="P";  }
+      
+      else if ( a.charAt(0)== "A" && a.charAt(1)== "C"){    amino="T";  }
+
+      else if ( (a.charAt(0)== "T"||a.charAt(0)== "U") && a.charAt(1)== "C"){    amino="S";  }
+
+      else if ( a.charAt(0)== "A" && a.charAt(1)== "G"){
+         if ( a.charAt(2)== "T"||a.charAt(2)== "U" || a.charAt(2)== "C")
+            amino="S";
+         else amino="R";
+      }
+      
+      else if ( (a.charAt(0)== "T"||a.charAt(0)== "U") && a.charAt(1)== "A"){
+         if ( a.charAt(2)== "T"|| a.charAt(2)== "U" || a.charAt(2)== "C")
+            amino="Y";
+         else amino="#";
+      }
+
+      else if ( a.charAt(0)== "C" && a.charAt(1)== "A"){
+         if ( a.charAt(2)== "A" || a.charAt(2)== "G")
+            amino="Q";
+         else amino="H";
+      }
+
+      else if ( a.charAt(0)== "A" && a.charAt(1)== "A"){
+         if ( a.charAt(2)== "T"|| a.charAt(2)== "U" || a.charAt(2)== "C")
+            amino="N";
+         else amino="K";
+      }
+
+      else if ( a.charAt(0)== "G" && a.charAt(1)== "A"){
+         if ( a.charAt(2)== "A" || a.charAt(2)== "G")
+            amino="E";
+         else amino="D";
+      }
+      
+      else if ( a.charAt(0)== "C" && a.charAt(1)== "G"){    amino="R";  }
+
+     
+      str=str + amino;
+      i=j  ;
+      
+   } 
+        
+   return str ;
+   }
+}
+
+function reverse35(strInput) {
+   var i = 0;
+   var l="";
+   var str="";
+   if (document.theForm.elements[4].checked){   var result=checkInputValidity( strInput, 1 );  }
+   if (document.theForm.elements[5].checked){   var result=checkInputValidity( strInput, 2 );  }
+   if (document.theForm.elements[6].checked){   var result=checkInputValidity( strInput, 3 );  }
+   
+   if ( result ==1  ){
+      for ( i=0; i< strInput.length; i++ ){
+         l=strInput.charAt(i);
+         if ( l == "A")         l = "T";
+         else if ( l == "T")    l = "A";
+		 else if ( l == "U")    l = "A";
+         else if ( l == "G")    l = "C";
+         else if ( l == "C")    l = "G";
+         str=str + l;
+      }
+   return  str ;
+   } 
+}
+
+function reverseTranslation( str ){
+   var i=0;   var j=0;
+   var strInput = str ;
+   var result=checkInputValidity( strInput, 3 );
+
+   if ( result == 1 ){
+      var a = "";      var str = "";
+      var arr = new Array(5000);
+      while ( j < strInput.length ){
+         a = strInput.charAt(j);
+         if ( a=="I" ){
+            arr[i]="ATT";	arr[i+1]="ATC";	arr[i+2]="ATA";	arr[i+3]="   ";	arr[i+4]="   ";	arr[i+5]="   ";
+         }
+         else if ( a=="L" ){
+            arr[i]="CTT";	arr[i+1]="CTC";	arr[i+2]="CTA";	arr[i+3]="CTG";	arr[i+4]="TTA";	arr[i+5]="TTG";         
+         }
+         else if ( a=="V" ){
+            arr[i]="GTT";	arr[i+1]="GTC";	arr[i+2]="GTA";	arr[i+3]="GTG";	arr[i+4]="   ";	arr[i+5]="   ";         
+         }
+         else if ( a=="F" ){
+            arr[i]="TTT";	arr[i+1]="TTC";	arr[i+2]="   ";	arr[i+3]="   ";	arr[i+4]="   ";	arr[i+5]="   ";         
+         }
+         else if ( a=="M" ){
+            arr[i]="ATG";	arr[i+1]="   ";	arr[i+2]="   ";	arr[i+3]="   ";	arr[i+4]="   ";	arr[i+5]="   ";         
+         }
+         
+         else if ( a=="C" ){
+            arr[i]="TGT";	arr[i+1]="TGC";	arr[i+2]="   ";	arr[i+3]="   ";	arr[i+4]="   ";	arr[i+5]="   ";         
+         }
+         else if ( a=="A" ){
+            arr[i]="GCT";	arr[i+1]="GCC";	arr[i+2]="GCA";	arr[i+3]="GCG";	arr[i+4]="   ";	arr[i+5]="   ";         
+         }
+         else if ( a=="G" ){
+            arr[i]="GGT";	arr[i+1]="GGC";	arr[i+2]="GGA";	arr[i+3]="GGG";	arr[i+4]="   ";	arr[i+5]="   ";         
+         }
+         else if ( a=="P" ){
+            arr[i]="CCT";	arr[i+1]="CCC";	arr[i+2]="CCA";	arr[i+3]="CCG";	arr[i+4]="   ";	arr[i+5]="   ";         
+         }
+         else if ( a=="T" ){
+            arr[i]="ACT";	arr[i+1]="ACC";	arr[i+2]="ACA";	arr[i+3]="ACG";	arr[i+4]="   ";	arr[i+5]="   ";         
+         }
+         else if ( a=="S" ){
+            arr[i]="TCT";	arr[i+1]="TCC";	arr[i+2]="TCA";	arr[i+3]="TCG";	arr[i+4]="AGT";	arr[i+5]="AGC";         
+         }
+         else if ( a=="Y" ){
+            arr[i]="TAT";	arr[i+1]="TAC";	arr[i+2]="   ";	arr[i+3]="   ";	arr[i+4]="   ";	arr[i+5]="   ";         
+         }
+         else if ( a=="W" ){
+            arr[i]="TGG";	arr[i+1]="   ";	arr[i+2]="   ";	arr[i+3]="   ";	arr[i+4]="   ";	arr[i+5]="   ";         
+         }
+         else if ( a=="Q" ){
+            arr[i]="CAA";	arr[i+1]="CAG";	arr[i+2]="   ";	arr[i+3]="   ";	arr[i+4]="   ";	arr[i+5]="   ";         
+         }
+         else if ( a=="N" ){
+            arr[i]="AAT";	arr[i+1]="AAC";	arr[i+2]="   ";	arr[i+3]="   ";	arr[i+4]="   ";	arr[i+5]="   ";         
+         }
+         else if ( a=="H" ){
+            arr[i]="CAT";	arr[i+1]="CAC";	arr[i+2]="   ";	arr[i+3]="   ";	arr[i+4]="   ";	arr[i+5]="   ";         
+         }
+         else if ( a=="E" ){
+            arr[i]="GAA";	arr[i+1]="GAG";	arr[i+2]="   ";	arr[i+3]="   ";	arr[i+4]="   ";	arr[i+5]="   ";         
+         }
+         else if ( a=="D" ){
+            arr[i]="GAT";	arr[i+1]="GAC";	arr[i+2]="   ";	arr[i+3]="   ";	arr[i+4]="   ";	arr[i+5]="   ";         
+         }
+         else if ( a=="K" ){
+            arr[i]="AAA";	arr[i+1]="AAG";	arr[i+2]="   ";	arr[i+3]="   ";	arr[i+4]="   ";	arr[i+5]="   ";         
+         }
+         else if ( a=="R" ){
+            arr[i]="CGT";	arr[i+1]="CGC";	arr[i+2]="CGA";	arr[i+3]="CGG";	arr[i+4]="AGA";	arr[i+5]="AGG";         
+         }
+         else if ( a =="#" ){
+            arr[i]="TAA";	arr[i+1]="TAG";	arr[i+2]="TGA";	arr[i+3]="   ";	arr[i+4]="   ";	arr[i+5]="   ";         
+         }
+         
+         i = i + 6;
+         j++;
+      
+      }
+      
+      for ( x=0; x< strInput.length; x++)
+         str = str + strInput.charAt(x) +"   ";
+      str = str + "\n";
+
+      var count = i;
+      var n;
+      for ( m =0; m < 6; m++ ){
+         str = str + arr[m];
+         n = m+6;
+         while ( n < count  ){
+            str = str + " " + arr[n];
+            n = n+6
+         }
+         str = str + "\n";
+      }
+   
+   document.theForm.outboxAminoDNA.value = str;
+   
+   }  // end of "if ( result == 1 ){"
+
+}     // end  "function reverseTranslation ( strInput ){ "
+
+function clearText(box) {
+   if (box==0){
+      document.theForm.inputbox.value = ""
+      document.theForm.outboxDNA.value = "";
+      document.theForm.outboxmRNA.value = "";
+      document.theForm.outboxAmino.value = "";
+      document.theForm.outbox3_5.value = "";
+      document.theForm.outStat.value = "";
+      document.theForm.outboxAminoDNA.value = "";
+   }
+   
+   else {
+       document.theForm.inputAmino.value = "";
+       document.theForm.outboxAminoDNA.value = "";
+   }
+}
+
+function transform () {
+      var str1 = document.theForm.inputbox.value;
+	  str1 = str1.toUpperCase();
+      document.theForm.outboxDNA.value = "";
+      document.theForm.outboxmRNA.value = "";
+      document.theForm.outboxAmino.value = "";
+      document.theForm.outbox3_5.value = "";
+      
+      if (document.theForm.elements[4].checked){ 
+         
+         document.theForm.outboxmRNA.value += transcription(str1);
+         document.theForm.outboxAmino.value += translation(str1,1) ;
+         document.theForm.outbox3_5.value += reverse35(str1);
+      } 
+       
+      if (document.theForm.elements[5].checked){
+         document.theForm.outboxDNA.value += reverseTranscription(str1);
+         document.theForm.outboxAmino.value += translation(str1,2) ;
+         document.theForm.outbox3_5.value += reverse35(str1);
+      }
+	  
+	  if (document.theForm.elements[6].checked){
+         document.theForm.outboxDNA.value += "";
+         document.theForm.outboxAmino.value += "" ;
+         document.theForm.outbox3_5.value += "";
+		 reverseTranslation(str1 );
+      }
+
+}
+
+function statistics(){
+   var strInput = document.theForm.inputbox.value;
+   strInput = strInput.toUpperCase();
+   var a = "";
+   var numInDNA = "", numInRNA="", numProtein="";
+   countA = 0; countT = 0;countC = 0;countG = 0; countU=0; 
+   countAA=0; countAR=0; countAN=0; countAD=0; countAC=0; countAQ=0; countAE=0; countAG=0; 
+   countAH=0; countAI=0; countAL=0; countAK=0; countAM=0; countAF=0; countAP=0; countAS=0; 
+   countAT=0; countAW=0; countAY=0; countAV=0;  
+   if (document.theForm.elements[4].checked){  
+      for ( i=0; i< strInput.length; i++ ){
+       a = strInput.charAt(i);
+       if (a == "A") countA++;
+       if (a == "T") countT++;
+       if (a == "C") countC++;
+       if (a == "G") countG++;
+     }
+     numInDNA = numInDNA+ " There are " + countA + " A's, " + countT + " T's, " + countC + " C's, " + countG + " G's .";
+     document.theForm.outStat.value = numInDNA;           
+   } // end base=1
+   if (document.theForm.elements[5].checked){  
+     for ( i=0; i< strInput.length; i++ ){
+       a = strInput.charAt(i);
+       if (a == "A") countA++;
+       if (a == "U") countT++;
+       if (a == "C") countC++;
+       if (a == "G") countG++;
+     }
+     numInRNA = numInRNA+ " There are " + countA + " A's, " + countU + " U's, " + countC + " C's, " + countG + " G's .";
+     document.theForm.outStat.value = numInRNA;           
+   }//  end base=2
+   if (document.theForm.elements[6].checked){  
+     for ( i=0; i< strInput.length; i++ ){
+       a = strInput.charAt(i);
+       if (a == "A") countAA++; if (a == "R") countAR++; if (a == "N") countAN++; if (a == "D") countAD++; 
+       if (a == "C") countAC++; if (a == "Q") countAQ++; if (a == "E") countAE++; if (a == "G") countAG++;
+       if (a == "H") countAH++; if (a == "I") countAI++; if (a == "L") countAL++; if (a == "K") countAK++;
+       if (a == "M") countAM++; if (a == "F") countAF++; if (a == "P") countAP++; if (a == "S") countAS++;
+	   if (a == "T") countAT++; if (a == "W") countAW++; if (a == "Y") countAY++; if (a == "V") countAV++;
+     }
+     numProtein = numProtein+ " There are " + countAA + " A's, " + countAR + " R's, " + countAN + " N's, " 
+	 + countAD + " D's ," + countAC + " C's, " + countAQ + " Q's, " + countAE + " E's, " + countAG + " G's, "
+	 + countAH + " H's, " + countAI + " I's, " + countAL + " L's, " + countAK + " K's, "
+	 + countAT + " T's, " + countAW + " W's, " + countAY + " Y's, " + countAV + " V's, "             ;
+     document.theForm.outStat.value = numProtein;           
+   }  // end base=3
+   
+}  //end function statistics(base)
+
+function searchSubstring(){
+   var strInput = document.theForm.inSearchSubstring.value;
+   var strTarget = document.theForm.inputbox.value;
+   var str = "";
+   var count = 0;
+   var tempSubstr = "";
+   var eq;
+   for ( i=0; i< strTarget.length ; i++ ){
+     tempSubstr = strTarget.substring(i, (strInput.length + i ) );
+     if (tempSubstr == strInput ){
+        count++;
+        str = str + "Find  at the Index: " + i + "\n";
+     }
+   }
+   if ( count > 0 )  str = str + "Total " + count + " substring(S) found -- " + strInput ;
+   else str = "Can't find the substring: " + strInput ;
+   alert (str);
+}
+
+
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+<style type="text/css">
+<!--
+.style1 {color: #000000}
+-->
+</style>
+</head>
+
+
+<body background="wcolor.gif">
+<form method=post name=theForm action="bounce.cgi">
+  <table width="734" border="0">
+    <tr>
+      <td width="394" height="48"><div align="left">
+        <div id="Layer1" style="position:absolute; width:609px; height:38px; z-index:1; left: 11px; top: 15px;">
+          <table width="606" border="0">
+            <tr>
+              <td width="33" height="46" align="center" valign="top"><div align="left" class="style1"> <a href="http://localhost/program.php"><img src="http://localhost/pics/back.jpg" border=0 ></a> </div></td>
+              <td width="34" align="center" valign="top"><div align="left" class="style1"><a href="http://localhost/index.php"><img src="http://localhost//pics/home.jpg" border=0 ></a></div></td>
+              <td width="525"><div align="left"><font color="#FF9900"><strong><font size="3" face="Verdana, Arial, Helvetica, sans-serif"> 
+			  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bioinformatics * DNA * RNA * Protein</font></strong></font></div></td>
+            </tr>
+          </table>
+        </div>
+        <font color="#FF9900"><strong></strong></font></div></td>
+      <td width="157">&nbsp;</td>
+      <td width="169"><div id="Layer2" style="position:absolute; width:120px; height:39px; z-index:2; left: 626px; top: 25px;"><img src="http://localhost/pics/wspace_name2.gif" width="120" height="38"></div></td>
+    </tr>
+    <tr>
+      <td height="44" colspan="3" align="center" valign="top"><div align="left">_______________________________________________________________________</div></td>
+    </tr>
+    <tr> 
+      <td height="40">
+        <h3><font size="2">Input Data Here:</font></h3>
+      </td>
+      <td colspan="2"><div align="right"></div></td>
+    </tr>
+    <tr> 
+      <td><font size="1">
+        <textarea name=inputbox rows=6 cols=60></textarea> 
+        </font></td>
+      <td><p><font size="1">          
+        <input name=generateRandomString type=button value="Generate Random String" onClick=generateRadomStr()>
+        </font></p>
+        <p><font size="2">              
+          <input name=generate type=button value="GO !!!" onClick=transform()>
+</font></p>
+        <p><font size="2">
+          <input name=clearinput type=button value="Clear All" onClick=clearText(0)>
+        </font></p>
+        </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td height="55" colspan="3"><table>
+          <tr> 
+            <td> <font size="2"><strong> 
+              <input name=whichcase type=radio value="Input DNA">
+              Input DNA &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+              <input name=whichcase type=radio value="Input mRNA">
+              Input mRNA &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+              <input name=whichcase type=radio value="Input Protein">
+              Input Protein </strong></font></td>
+          </tr>
+        </table>
+        <p>---------------------------------------------------------------------------------------------------------------------</p></td>
+    </tr>
+  </table>
+  <table width="200" border="0">
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+  <table width="76%" border="0">
+    <tr>
+      <td width="31%" height="36"><h4><font size="2"><strong>DNA Output</strong></font></h4></td>
+      <td width="69%"><h4><font size="2">Reverse String</font></h4></td>
+    </tr>
+    <tr>
+      <td><font size="2">
+        <textarea name=outboxDNA rows=4 cols=30></textarea> 
+      </font></td>
+      <td><font size="2">
+        <textarea name=revStr rows=4 cols=30></textarea> &nbsp; &nbsp;&nbsp; &nbsp;
+        <input name=RevStr type=button value="Reverse String"  onClick=reverseStr()> 
+      </font></td>
+    </tr>
+  </table>
+  <table width="76%" border="0">
+    <tr>
+      <td width="32%" height="48"><h4><font size="2">mRNA Output</font></h4></td>
+      <td width="68%"><h4><font size="2"> Amino Acid Output</font></h4>
+</td>
+    </tr>
+    <tr>
+      <td><font size="2">
+        <textarea name=outboxmRNA rows=4 cols=30></textarea> 
+      </font></td>
+      <td><p> 
+          <font size="2">
+          <textarea name=outboxAmino rows=4 cols=30></textarea>
+          </font></td>
+    </tr>
+  </table>
+  <table width="76%" border="0">
+    <tr>
+      <td height="44"><h4><font size="2">3'<->5' Output</font></h4></td>
+    </tr>
+    <tr>
+      <td><font size="2">
+        <textarea name=outbox3_5 rows=4 cols=30></textarea> 
+      </font></td>
+    </tr>
+  </table>
+  <table width="74%" border="0">
+    <tr>
+      <td width="32%" height="53"><h4><font size="2">Statistics Output</font></h4>
+</td>
+      <td width="68%"><h4><font size="2">Search Substring</font></h4>
+</td>
+    </tr>
+    <tr>
+      <td><p> 
+          <font size="2">
+          <textarea name=outStat rows=3 cols=30></textarea></font>      
+        <p><font size="2">
+          <input name=Count type=button value="Count"  onClick=statistics()>
+          </font></td>
+      <td><p> 
+          <font size="2">
+          <textarea name=inSearchSubstring rows=3 cols=30></textarea></font>      
+        <p><font size="2">
+          <input name=Search type=button value="Search"  onClick=searchSubstring()>      
+          </font></td>
+    </tr>
+  </table>
+  <table width="74%" border="0">
+    <tr>
+      <td height="50"><h4><font size="2">Amino->DNA Output</font></h4></td>
+    </tr>
+    <tr>
+      <td height="66"><font size="2">
+        <textarea name=outboxAminoDNA rows=7 cols=60 wrap=off></textarea>
+      </font></td>
+    </tr>
+  </table>
+  <table width="719" border="0">
+    <tr>
+      <td width="713" height="28"><p>----------------------------------------------------------------------------------------------------------------------</p></td>
+    </tr>
+  </table>
+  <table width="666" border="0">
+    <tr>
+      <td width="65" height="35" align="center" valign="top"><div align="center"> <a href=""> </a><a href="http://localhost/program.php"><img src="http://localhost/pics/back.jpg" border=0 ></a> </div></td>
+      <td width="65" align="center" valign="top"><a href="http://localhost/index.php"><img src="http://localhost//pics/home.jpg" border=0 ></a></td>
+      <td width="148" align="center" valign="top">&nbsp;</td>
+      <td width="213" align="center" valign="top"><font size="2">Sites to visit for Searching: </font></td>
+      <td width="153" align="center" valign="top"><h4><font size="2"><a href="http://www.ncbi.nlm.nih.gov/BLAST/" onClick= 
+        window.open("http://www.ncbi.nlm.nih.gov/BLAST/","BLAST","location=no,width=800,height=600");
+        onMouseOver="window.status='Open new window ...';"> BLAST conversion</a> </font></h4></td>
+    </tr>
+  </table>
+  </form>
+</body>
+</html>
+
